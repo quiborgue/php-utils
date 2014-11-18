@@ -1,0 +1,25 @@
+{
+    "name": "quiborgue/utils",
+    "description": "Quiborgue utils classes",
+    "authors": [
+        {
+            "name": "Quiborgue",
+            "email": "dev@quiborgue.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+    },
+    "autoload": {
+        "psr-0": {
+            "Quiborgue\\Utils": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://bitbucket.org/quiborgue/php-utils"
+        }
+    ]
+}
