@@ -1,4 +1,4 @@
-<?php
+<?php namespace Quiborgue\Utils;
 class ArrayUtils {
 	public static function diff_assoc_recursive($array1, $array2) { 
 		foreach($array1 as $key => $value) { 
