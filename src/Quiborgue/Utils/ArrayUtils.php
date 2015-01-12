@@ -1,6 +1,6 @@
 <?php namespace Quiborgue\Utils;
 class ArrayUtils {
-	public static function diff_assoc_recursive($array1, $array2) { 
+	public static function diffAssocRecursive($array1, $array2) { 
 		if (count($array2) > count($array1)) {
 			$aux = $array1;
 			$array1 = $array2;
@@ -14,7 +14,7 @@ class ArrayUtils {
 				} elseif(!is_array($array2[$key])) { 
 					$difference[$key] = $value; 
 				} else { 
-					$new_diff = self::diff_assoc_recursive($value, $array2[$key]); 
+					$new_diff = self::diffAssocRecursive($value, $array2[$key]); 
 					if($new_diff != FALSE) { 
 						$difference[$key] = $new_diff; 
 					} 

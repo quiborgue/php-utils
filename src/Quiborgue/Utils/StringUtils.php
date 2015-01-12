@@ -1,6 +1,6 @@
 <?php namespace Quiborgue\Utils;
 class StringUtils {
-	public static function is_regex($str) {
+	public static function isRegex($str) {
     	$regex = "/^\/[\s\S]+\/$/";
     	return preg_match($regex, $str);
 	}
