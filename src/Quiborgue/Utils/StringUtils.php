@@ -4,4 +4,8 @@ class StringUtils {
     	$regex = "/^\/[\s\S]+\/$/";
     	return preg_match($regex, $str);
 	}
+
+	public static function clearText($text) {
+		return str_replace("\t", "", str_replace("\n", "", strip_tags($text)));
+	}
 }
