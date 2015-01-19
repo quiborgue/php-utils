@@ -25,4 +25,46 @@ class ArrayUtils {
 		} 
 		return !isset($difference) ? array() : $difference; 
 	}
+
+	public static function doesStructureLookAlike($given, $expected) {
+		$isStructureGivenArray = is_array($given);
+        $isStructureExpectedArray = is_array($expected);
+        if ($isStructureGivenArray != $isStructureExpectedArray) {
+            $isStructureGivenArrayStr = $isStructureGivenArray ? "" : "not";
+            $isStructureExpectedArrayStr = $isStructureExpectedArray ? "" : "not";
+            throw new \Exception("Structure given is $isStructureGivenArrayStr an Array and Structure expected is $isStructureExpectedArrayStr an Array.");
+        }
+        
+        if ($isStructureGivenArray && $isStructureExpectedArray) {
+        	if (count($given) == 0 && count($expected) == 0) {
+        		return;
+        	}
+
+        	self::doesStructureLookAlike($given[0], $expected[0]);
+        }
+        
+        $isStructureGivenObject = is_object($given);
+        $isStructureExpectedObject = is_object($expected);
+        if ($isStructureGivenObject != $isStructureExpectedObject) {
+            $isStructureGivenObjectStr = $isStructureGivenObject ? "" : "not";
+            $isStructureExpectedObjectStr = $isStructureExpectedObject ? "" : "not";
+            throw new \Exception("Structure given is $isStructureGivenObjectStr an Object and Structure expected is $isStructureExpectedObjectStr an Object.");
+        }
+
+        if ($isStructureGivenObject && $isStructureExpectedObject) {
+        	$givenObjectArray = (array) $given;
+        	$expectedObjectArray = (array) $expected;
+        	$diff = array_diff(array_keys($expectedObjectArray), array_keys($givenObjectArray));
+
+        	if (count($diff) > 0) {
+        		throw new \Exception("Structure given has " . implode(", ", array_keys($givenObjectArray)) . 
+        			" and Structure expected has " . implode(", ", array_keys($expectedObjectArray)) . ".");
+        	}
+
+        	foreach ($givenObjectArray as $k => $v) {
+        		self::doesStructureLookAlike($v, $expectedObjectArray[$k]);
+        	}
+        }        
+    }
 }
+            
