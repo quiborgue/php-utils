@@ -15,11 +15,5 @@
             "Quiborgue\\Utils": "src/"
         }
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://bitbucket.org/quiborgue/php-utils"
-        }
-    ]
+    "minimum-stability": "stable"
 }
